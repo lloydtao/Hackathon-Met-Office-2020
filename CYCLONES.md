@@ -10,5 +10,3 @@
 * ISO Date
 * ISO Time
 * Intensity (estimated highest wind speed)
-
-### Sample Data
