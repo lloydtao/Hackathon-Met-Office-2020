@@ -11,17 +11,14 @@
     <title>Cyclones</title>
   </head>
   <body>
-    <h1>Cyclones</h1>
+    <div class="container bg-light rounded p-5">
+        <h1>Upload Cycles</h1>
 
-    {% for cyclone in cyclones %}
-        <h1>{{ cyclone.date }}</h1>
-    {% endfor %}
-
-    {% comment %} Import cyclone data {% endcomment %}
-    <script>
-        cyclones = {{ cyclones }};
-        console.log(cyclones);
-    </script>
+        <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+            <input id="fileupload" name="csv_file" type="file" />
+            <input type="submit" value="Upload" id="submit" />
+        </form>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
