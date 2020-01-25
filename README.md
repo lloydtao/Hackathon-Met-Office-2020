@@ -40,3 +40,16 @@ Step 5: User uses website.
 
 ### Tropical Cyclone Spreadsheet
 
+### csv to import JSON format 
+
+```javascript
+var data = [
+    [
+    'seriesA', [ latitude, longitude, magnitude, latitude, longitude, magnitude, ... ]
+    ],
+    [
+    'seriesB', [ latitude, longitude, magnitude, latitude, longitude, magnitude, ... ]
+    ]
+];
+```
+
