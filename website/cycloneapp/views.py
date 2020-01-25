@@ -7,7 +7,7 @@ def index(request):
     context = {}
     cyclones = Cyclone.objects.all()
     context["cyclones"] = cyclones
-    return render(request, "cycloneapp/index.html", context)
+    return render(request, "globe/index.html", context)
 
 def upload_cyclones(request):
     if request.method == "POST":
