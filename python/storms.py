@@ -36,7 +36,7 @@ for node in cyclone_nodes:
         cyclone.append([float(node[3]), float(node[4]), float(node[6])])
     else:
         cyclones[last] = cyclone
-        cyclone = ([float(node[3]), float(node[4]), float(node[6])])
+        cyclone = [[float(node[3]), float(node[4]), float(node[6])]]
         last = current
 
 # Start timer.
