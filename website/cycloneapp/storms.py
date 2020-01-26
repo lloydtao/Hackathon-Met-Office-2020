@@ -54,12 +54,16 @@ def storm_query_slow(latitude, longitude, radius, start_year, end_year, input_fi
     SIDs_in_radius = ['']
     for node in cyclone_nodes:
         year = datetime.date(int(node[5][:4]), 1, 1)
-        start_time = datetime.date(start_year, 1, 1)
-        end_time = datetime.date(end_year, 12, 31)
+        # start_time = datetime.date(start_year, 1, 1)
+        # end_time = datetime.date(end_year, 12, 31)
         coords_user = (latitude, longitude)
         coords_node = (node[3], node[4])
         distance = geopy.distance.distance(coords_user, coords_node).km
-        if distance < radius and start_time < year < end_time:
+        # if distance < radius and start_time < year < end_time:
+        #     if not node[0] == SIDs_in_radius[-1]:
+        #         SIDs_in_radius.append(node[0])
+        #         count = count + 1
+        if distance < radius:
             if not node[0] == SIDs_in_radius[-1]:
                 SIDs_in_radius.append(node[0])
                 count = count + 1
