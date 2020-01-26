@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -119,7 +118,15 @@
   </div>
 
 
+
+
   <script type="text/javascript" src="dat.gui.min.js"></script>
+
+  <script type="text/javascript" src="{% static "globe/third-party/Detector.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/three.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/Tween.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/globe.js" %}"></script>
+
   <script type="text/javascript">
 
 window.onload = function() {
