@@ -2,8 +2,8 @@
 // ;) - Jordan xoxo
 
 const GLOBE_RADIUS = 200;
-const CURVE_MIN_ALTITUDE = 5;
-const CURVE_MAX_ALTITUDE = 5;
+const CURVE_MIN_ALTITUDE = 0;
+const CURVE_MAX_ALTITUDE = 0;
 const DEGREE_TO_RADIAN = Math.PI / 180;
 
 function clamp(num, min, max) {
