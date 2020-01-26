@@ -135,13 +135,13 @@
   <script type="text/javascript">
   var FizzyText = function() {
     this.message = "test";
-    this.dateRange = "";
+    this.dateRange = 2020;
     this.latitude = 0.0;
     this.longitude = 0.0;
     this.intensity = 0;
     this.radius = 50;
     this.submit = function() {
-
+      
       var xhr = new XMLHttpRequest();
       
       xhr.open('GET', 'freqStorms/', true);
@@ -199,7 +199,6 @@
   window.onload = function() {
     var text = new FizzyText();
     var gui = new dat.GUI();
-    gui.add(text, 'message');
     gui.add(text, 'dateRange', 1842, 2020);
     gui.add(text, 'latitude');
     gui.add(text, "longitude");
@@ -207,18 +206,6 @@
     gui.add(text, 'radius', 50, 500);
     gui.add(text, "submit");
   };
-
-  controller.onChange(function(value) {
-      var myArray = [
-        {
-        "lat": lat,
-        "lon": lon,
-        "date": date,
-        "radius": radius,
-        "intensity": intensity
-        }
-      ]
-   }); 
   </script>
 
   
