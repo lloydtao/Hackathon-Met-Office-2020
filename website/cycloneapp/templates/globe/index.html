@@ -139,8 +139,9 @@
       var container = document.getElementById('container');
       var globe = new DAT.Globe(container);
 
-      const exampleLine = [ 13, 61.3, 26.3, 60.4 ]
-      globe.addCurve(exampleLine);
+      // const exampleLine = [ 13, 61.3, 26.3, 60.4 ]
+      // globe.addCurve(exampleLine);
+      //  globe.addCurve([32.6, -38.4, 39.8, -85.4])
 
       console.log(globe);
       var i, tweens = [];
@@ -171,18 +172,36 @@
       
       xhr = new XMLHttpRequest();
       // xhr.open('GET', '/static/globe/population909500pretty.json', true);
-      xhr.open('GET', '/static/globe/Sample-Cyclones.json', true);
+      xhr.open('GET', '/static/globe/output.json', true);
       xhr.onreadystatechange = function(e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             var data = JSON.parse(xhr.responseText);
             window.data = data;
+
+            // console.log(data);
+            
             // for (i=0;i<data.length;i++) {
             //   globe.addData(data[i][1], {format: 'magnitude', name: data[i][0], animated: true});
-            // }
+            // )
 
-            for (i = 0; i < data.length; i++) {
-              globe.addData(getSplineFromCoords())
+            for (var key in data) {
+              const nodes = data[key]
+
+              // console.log(nodes);
+              for (var i = 0; i < nodes.length - 1; i++) {
+                const startNode = nodes[i]
+                const endNode = nodes[i + 1]
+
+                // console.log(startNode);
+                // console.log(endNode);
+
+                const coordSet = [parseFloat(startNode[0]), parseFloat(startNode[1]), parseFloat(endNode[0]), parseFloat(endNode[1])]
+                // console.log(coordSet)
+
+
+                globe.addCurve(coordSet, startNode[2])
+              }
             }
 
             // New layer of drawings
