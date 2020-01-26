@@ -3,6 +3,8 @@ import csv
 from django.shortcuts import render
 
 from .models import Cyclone, CycloneNode
+from .storms_with_query import query_storms
+
 
 def index(request):
     context = {}
@@ -14,6 +16,16 @@ def index(request):
     context["cyclones"] = cyclones
 
     return render(request, "globe/index.html", context)
+
+
+def freq_storms(request):
+    date_range = request.GET.get("date_range")
+    click_long = request.GET.get("click_long")
+    click_lat = request.GET.get("click_lat")
+    radius = request.GET.get("radius")
+    
+    # Process cyclones based on radius and date range
+    query_storms(date_range, click_long, click_lat, radius)
 
 
 def upload_cyclones(request):
