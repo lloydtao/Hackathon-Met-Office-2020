@@ -26,9 +26,9 @@ def freq_storms(request):
     click_lat = request.GET.get("click_lat")
     radius = request.GET.get("radius")
     
-    # Process cyclones based on radius and date range
+    # Process cyclones based on radius and date range   
     # return JsonResponse(query_storms(date_range, click_long, click_lat, radius))
-    return JsonResponse(storm_query_slow(date_range, click_lat, click_long, radius))
+    return JsonResponse(storm_query_slow(click_lat, click_long, radius, "cycloneapp/static/globe/Real-Cyclones-Intense.csv"))
 
 
 def upload_cyclones(request):

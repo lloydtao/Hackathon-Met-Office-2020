@@ -6,6 +6,8 @@ import sys
 import time
 import geopy.distance
 
+import pathlib
+
 # Read a co-ordinate and radius.
 # latitude = float(sys.argv[1])
 # longitude = float(sys.argv[2])
@@ -17,6 +19,9 @@ def storm_query_slow(latitude, longitude, radius, input_file):
     nodes = 0
     max_nodes = 10000
     cyclone_nodes = []
+    
+    print(pathlib.Path().absolute())
+
     file = open(input_file, 'r')
     for line in file:
         cyclone_nodes.append(line.strip().split(','))
