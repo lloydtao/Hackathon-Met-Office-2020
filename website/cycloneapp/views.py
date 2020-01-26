@@ -14,7 +14,6 @@ def index(request):
     # ranged_cyclones = Cyclone.objects.filter(date__range=["1950-01-01", "1970-01-01"])
     
     context["cyclones"] = cyclones
-
     return render(request, "globe/index.html", context)
 
 
