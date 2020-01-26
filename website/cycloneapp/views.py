@@ -26,9 +26,17 @@ def freq_storms(request):
     click_lat = request.GET.get("click_lat")
     radius = request.GET.get("radius")
     
+    date_split = date_range.split("-")
+    try:
+        min_year = int(date_split[0])
+        max_year = int(date_split[1])
+    except TypeError:
+        print(f"Year range '{date_range}' was invalid.")
+        return JsonResponse({})
+
     # Process cyclones based on radius and date range   
     # return JsonResponse(query_storms(date_range, click_long, click_lat, radius))
-    return JsonResponse(storm_query_slow(click_lat, click_long, round(float(radius)), "cycloneapp/static/globe/Real-Cyclones-Intense.csv"))
+    return JsonResponse(storm_query_slow(click_lat, click_long, round(float(radius)), min_year, max_year, "cycloneapp/static/globe/Real-Cyclones-Intense.csv"))
 
 
 def upload_cyclones(request):
