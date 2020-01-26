@@ -107,7 +107,7 @@
   <div id="container"></div>
 
   <div id="info">
-    <strong><a href="http://www.chromeexperiments.com/globe">WebGL Globe</a></strong> <span class="bull">&bull;</span> Created by the Google Data Arts Team <span class="bull">&bull;</span> Data acquired from <a href="http://sedac.ciesin.columbia.edu/gpw/">SEDAC</a>
+    Made by Epic Data
   </div>
 
   <div id="currentInfo">
@@ -117,19 +117,19 @@
   </div>
 
   <div id="title">
-    World Population
+    Cyclone Frequency
   </div>
 
   <a id="ce" href="http://www.chromeexperiments.com/globe">
-    <span>This is a Chrome Experiment</span>
+    <span>This is a Dank Meme</span>
   </a>
 
   <script src="https://d3js.org/d3-geo.v1.min.js"></script>
   <script type="text/javascript" src="{% static "globe/third-party/Detector.js" %}"></script>
-  <script type="text/javascript" src="{% static "globe/third-party/three.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/three.js" %}"></script>
   <script type="text/javascript" src="{% static "globe/third-party/Tween.js" %}"></script>
   <script type="text/javascript" src="{% static "globe/metoffice.js" %}"></script>
-  <script type="text/javascript" src="{% static "globe/globe.js" %}?v=1.0.0"></script>
+  <script type="text/javascript" src="{% static "globe/globe.js" %}?v=1.2.0"></script>
   <script type="text/javascript">
     if(!Detector.webgl){
       Detector.addGetWebGLMessage();
@@ -138,6 +138,9 @@
       var years = ['1990','1995','2000'];
       var container = document.getElementById('container');
       var globe = new DAT.Globe(container);
+
+      const exampleLine = [ 13, 61.3, 26.3, 60.4 ]
+      globe.addCurve(exampleLine);
 
       console.log(globe);
       var i, tweens = [];
@@ -167,7 +170,7 @@
       
       
       xhr = new XMLHttpRequest();
-      xhr.open('GET', '/static/globe/population909500.json', true);
+      xhr.open('GET', '/static/globe/population909500pretty.json', true);
       xhr.onreadystatechange = function(e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
@@ -178,8 +181,7 @@
             }
 
             // New layer of drawings
-            const exampleLine = [ 13, 61.3, 13.3, 60.4 ]
-            globe.addCurve(exampleLine);
+            
             // globe.addData(getSplineFromCoords(exampleLine), {});
 
             // Add to THREE.Geometry

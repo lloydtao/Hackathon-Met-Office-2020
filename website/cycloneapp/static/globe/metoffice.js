@@ -1,9 +1,9 @@
 // Copied from https://medium.com/@xiaoyangzhao/drawing-curves-on-webgl-globe-using-three-js-and-d3-draft-7e782ffd7ab
 // ;) - Jordan xoxo
 
-const GLOBE_RADIUS = 2000;
-const CURVE_MIN_ALTITUDE = 200;
-const CURVE_MAX_ALTITUDE = 2000;
+const GLOBE_RADIUS = 200;
+const CURVE_MIN_ALTITUDE = 5;
+const CURVE_MAX_ALTITUDE = 5;
 const DEGREE_TO_RADIAN = Math.PI / 180;
 
 function clamp(num, min, max) {

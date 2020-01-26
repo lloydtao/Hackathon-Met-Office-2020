@@ -177,8 +177,10 @@ DAT.Globe = function(container, opts) {
     console.log(data);
     const curve = getSplineFromCoords(data);
 
-    var points = curve.getPoints(50);
-    var geometry = new THREE.BufferGeometry().setFromPoints( points );
+    console.log(curve);
+    var points = curve.spline.getPoints(50);
+    console.log(new THREE.Geometry());
+    var geometry = new THREE.Geometry().setFromPoints( points );
 
     var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
 
@@ -429,6 +431,7 @@ DAT.Globe = function(container, opts) {
   this.createPoints = createPoints;
   this.renderer = renderer;
   this.scene = scene;
+  this.addCurve = addCurve;
 
   return this;
 
