@@ -4,6 +4,8 @@ Calculate the cyclones that pass through the radius of a point.
 import json
 import sys
 import time
+import datetime
+
 import geopy.distance
 
 # Read a co-ordinate and radius.
@@ -40,39 +42,64 @@ import geopy.distance
 # # Start timer.
 # start = time.time()
 
+from .models import Cyclone, CycloneNode
+
 def query_storms(date_range, click_long, click_lat, radius):
-    # Dictionary mapping cyclones to a list of their cyclone nodes.
+    # Filter cyclones to within the date range
+    date_split = date_range.split("-")
+    min_date = datetime.date(int(date_split[0]), 1, 1)
+    max_date = datetime.date(int(date_split[1]), 1, 1)
+    dated_cyclones = Cyclone.objects.filter(datetime__range=(min_date, max_date))
+
+    # If none match, return early
+    if len(dated_cyclones) == 0: return {}
+
+    # Get all cyclones nodes of all cyclones
+    cyclone_nodes = []
+    for cyclone in dated_cyclones:
+        nodes = cyclone.nodes.all()
+        
+        cyclone_nodes.append(nodes)
+
+    # Map cycle nodes to cyclones
     count = 0
     cyclones = {}
     cyclone = []
-    last = cyclone_nodes[0][1]
+    last_key = cyclone_nodes[0].cyclone.sid
+
     for node in cyclone_nodes:
-        current = node[1]
-        if current == last:
-            cyclone.append([node[3], node[4], node[6]])
+        current_key = node.cyclone.sid
+
+        latitude = node.lat
+        longitude = node.long
+        intensity = node.intensity
+
+        if current_key == last_key:
+            cyclone.append([latitude, longitude, intensity])
         else:
-            cyclones[last] = cyclone
-            cyclone = [[node[3], node[4], node[6]]]
-            last = current
+            cyclones[last_key] = cyclone
+            cyclone = [[latitude, longitude, intensity]]
+            last_key = current_key
 
     # Create a list of SIDs that have at least one node within boundaries.
     SIDs_in_radius = ['']
     for node in cyclone_nodes:
-        coords_user = (latitude, longitude)
-        coords_node = (node[3], node[4])
+        # Calculate distance
+        coords_user = (click_lat, click_long)
+        coords_node = (node.lat, node.long)
         distance = geopy.distance.distance(coords_user, coords_node).km
+
+        # Check within boundary
         if distance < radius:
-            if not node[1] == SIDs_in_radius[-1]:
-                SIDs_in_radius.append(node[1])
+            if not node.cyclone.sid == SIDs_in_radius[-1]:
+                SIDs_in_radius.append(node.cyclone.sid)
                 count = count + 1
+
     SIDs_in_radius.pop(0)
 
+    # Filter cyclones and their nodes for if they're within radius
     filtered_cyclones = {}
     for SID in SIDs_in_radius:
         filtered_cyclones[SID] = cyclones[SID]
-    lines = json.dumps(filtered_cyclones, sort_keys=True, indent=4, separators=(',', ': '))
-    file = open('output.json', 'w')
-    file.truncate(0)
-    for line in lines:
-        file.write(line)
-    file.close()
+    
+    return filtered_cyclones
