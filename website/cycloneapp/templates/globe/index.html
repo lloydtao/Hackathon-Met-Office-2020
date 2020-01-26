@@ -107,13 +107,10 @@
 
   <div id="container"></div>
 
-<<<<<<< HEAD
-=======
   <div id="info">
     Made by Epic Data
   </div>
 
->>>>>>> 954b2b633df825b7e8bf46ef65b51f670f2efa90
   <div id="currentInfo">
     <span id="year1990" class="year">1990</span>
     <span id="year1995" class="year">1995</span>
@@ -124,54 +121,49 @@
     Cyclone Frequency
   </div>
 
-<<<<<<< HEAD
-
-
-
-  <script type="text/javascript" src="dat.gui.min.js"></script>
-=======
   <a id="ce" href="http://www.chromeexperiments.com/globe">
     <span>This is a Dank Meme</span>
   </a>
->>>>>>> 954b2b633df825b7e8bf46ef65b51f670f2efa90
 
   <script src="https://d3js.org/d3-geo.v1.min.js"></script>
   <script type="text/javascript" src="{% static "globe/third-party/Detector.js" %}"></script>
-  <script type="text/javascript" src="{% static "globe/third-party/three.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/three.min.js" %}"></script>
   <script type="text/javascript" src="{% static "globe/third-party/Tween.js" %}"></script>
-<<<<<<< HEAD
-  <script type="text/javascript" src="{% static "globe/globe.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/globe.js" %}?v=1.0.0"></script>
 
+  <script type="text/javascript" src="{% static "datGUI/dat.gui.min.js" %}"></script>
   <script type="text/javascript">
+  window.onload = function() {
+    // var dict = {
+      // "message" : null,
+      // "Date Range" : null,
+      // "Intensity" : null,
+      // "Radius" : null
+    // };
+    // var gui = new dat.GUI();
+    // var message = gui.add(dict, 'message');
+    // var date = gui.add(dict, 'Date Range', 1842, 2020);
+    // var intensity = gui.add(dict, 'Intensity', 0, 100);
+    // var radius = gui.add(dict, 'Radius', 50, 500);
 
-window.onload = function() {
-  var gui = new dat.GUI();
-  var message = gui.add('message');
-  var date = gui.add('Date Range', 1842, 2020);
-  var intensity = gui.add('Intensity', 0, 100);
-  var radius = gui.add('Radius', 50, 500);
-
-  controller.onChange(function(value) {
-    var myArray = [
-      {
-      "lat": lat,
-      "lon": lon,
-      "date": date,
-      "radius": radius,
-      "intensity": intensity
-      }]
-
-});
-  
-};
+//     controller.onChange(function(value) {
+      // var myArray = [
+        // {
+        // "lat": lat,
+        // "lon": lon,
+        // "date": date,
+        // "radius": radius,
+        // "intensity": intensity
+        // }]
+// 
+  // }); 
+  };
   </script>
 
   
   <script type="text/javascript" src={% static "globe/third-party/Detector.js" %}></script>
-  <script type="text/javascript" src={% static "globe/third-party/three.min.js" %}></script>
+  <script type="text/javascript" src={% static "globe/third-party/three.js" %}></script>
   <script type="text/javascript" src={% static "globe/third-party/Tween.js" %}></script>
-  <script type="text/javascript" src={% static "globe/globe.js" %}?v=1.0.0></script>
-  <script type="text/javascript"> 
 
   <script type="text/javascript" src="{% static "globe/metoffice.js" %}"></script>
   <script type="text/javascript" src="{% static "globe/globe.js" %}?v=1.2.0"></script>
