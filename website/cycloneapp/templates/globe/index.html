@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
@@ -123,10 +124,10 @@
     <span>This is a Chrome Experiment</span>
   </a>
 
-  <script type="text/javascript" src="/globe/third-party/Detector.js"></script>
-  <script type="text/javascript" src="/globe/third-party/three.min.js"></script>
-  <script type="text/javascript" src="/globe/third-party/Tween.js"></script>
-  <script type="text/javascript" src="/globe/globe.js"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/Detector.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/three.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/third-party/Tween.js" %}"></script>
+  <script type="text/javascript" src="{% static "globe/globe.js" %}"></script>
   <script type="text/javascript">
 
     if(!Detector.webgl){
@@ -165,7 +166,7 @@
       
       
       xhr = new XMLHttpRequest();
-      xhr.open('GET', '/globe/population909500.json', true);
+      xhr.open('GET', '/static/globe/population909500.json', true);
       xhr.onreadystatechange = function(e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {

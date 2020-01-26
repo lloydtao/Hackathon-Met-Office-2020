@@ -15,6 +15,7 @@
         <h1>Upload Cycles</h1>
 
         <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+            {% csrf_token %}
             <input id="fileupload" name="csv_file" type="file" />
             <input type="submit" value="Upload" id="submit" />
         </form>
