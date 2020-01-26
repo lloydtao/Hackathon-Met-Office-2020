@@ -173,13 +173,13 @@ DAT.Globe = function(container, opts) {
    * @param {*} data A table of two sets of long and lat representing the start and end of a line.
    */
   function addCurve(data) {
-    console.log("Drawing curve...");
-    console.log(data);
+    // console.log("Drawing curve...");
+    // console.log(data);
     const curve = getSplineFromCoords(data);
 
-    console.log(curve);
+    // console.log(curve);
     var points = curve.spline.getPoints(50);
-    console.log(new THREE.Geometry());
+    // console.log(new THREE.Geometry());
     var geometry = new THREE.Geometry().setFromPoints( points );
 
     var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
@@ -187,7 +187,7 @@ DAT.Globe = function(container, opts) {
     // Create the final object to add to the scene
     var curveObject = new THREE.Line( geometry, material );
     scene.add(curveObject);
-    console.log("Curve line draw hint added");
+    // console.log("Curve line draw hint added");
   }
 
 
