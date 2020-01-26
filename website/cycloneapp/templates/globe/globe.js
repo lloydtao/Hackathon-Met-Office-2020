@@ -286,6 +286,38 @@ DAT.Globe = function(container, opts) {
     container.style.cursor = 'move';
   }
 
+  function onDoubleClick(event) {
+    event.preventDefault();
+
+    var canvas = renderer.domElement;
+    var vector = new THREE.Vector3( ( (event.offsetX) / canvas.width ) * 2 - 1, - ( (event.offsetY) / canvas.height) * 2 + 1,
+0.5 );
+
+    projector.unprojectVector( vector, camera );
+
+    var ray = new THREE.Ray(camera.position, vector.subSelf(camera.position).normalize());
+
+    var intersects = ray.intersectObject(globe3d);
+
+    if (intersects.length > 0) {
+
+        object = intersects[0];
+
+        r = object.object.boundRadius;
+        x = object.point.x;
+        y = object.point.y;
+        z = object.point.z;
+
+        lat = 90 - (Math.acos(y / r)) * 180 / Math.PI;
+        lon = ((270 + (Math.atan2(x, z)) * 180 / Math.PI) % 360) - 180;
+
+        lat = Math.round(lat * 100000) / 100000;
+        lon = Math.round(lon * 100000) / 100000;
+        window.location.href = 'gmaps?lat='+lat+'&lon='+lon;
+
+    }
+  }  
+
   function onMouseMove(event) {
     mouse.x = - event.clientX;
     mouse.y = event.clientY;
