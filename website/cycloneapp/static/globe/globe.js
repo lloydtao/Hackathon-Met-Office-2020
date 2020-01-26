@@ -85,6 +85,9 @@ DAT.Globe = function(container, opts) {
   var padding = 40;
   var PI_HALF = Math.PI / 2;
 
+  this.points = {};
+  this.points.morphTargetInfluences = {};
+
   function init() {
 
     container.style.color = '#fff';
@@ -169,23 +172,50 @@ DAT.Globe = function(container, opts) {
   // Met Office 2020 Additional Functionality
 
   /**
+   * A linear interpolator for hexadecimal colors
+   * @param {String} a
+   * @param {String} b
+   * @param {Number} amount
+   * @example
+   * // returns #7F7F7F
+   * lerpColor('#000000', '#ffffff', 0.5)
+   * @returns {String}
+   */
+  function lerpColor(a, b, amount) { 
+
+      var ah = parseInt(a.replace(/#/g, ''), 16),
+          ar = ah >> 16, ag = ah >> 8 & 0xff, ab = ah & 0xff,
+          bh = parseInt(b.replace(/#/g, ''), 16),
+          br = bh >> 16, bg = bh >> 8 & 0xff, bb = bh & 0xff,
+          rr = ar + amount * (br - ar),
+          rg = ag + amount * (bg - ag),
+          rb = ab + amount * (bb - ab);
+
+      return '#' + ((1 << 24) + (rr << 16) + (rg << 8) + rb | 0).toString(16).slice(1);
+  }
+
+  /**
    * Adds a curve to the globe's drawing buffer.
    * @param {*} data A table of two sets of long and lat representing the start and end of a line.
    */
-  function addCurve(data) {
-    console.log("Drawing curve...");
-    console.log(data);
+  function addCurve(data, intensity) {
+    // console.log("Drawing curve...");
+    // console.log(data);
     const curve = getSplineFromCoords(data);
 
-    var points = curve.getPoints(50);
-    var geometry = new THREE.BufferGeometry().setFromPoints( points );
-
-    var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+    // console.log(curve);
+    var points = curve.spline.getPoints(8);
+    // var points = curve.spline.getPoints(50);
+    // console.log(new THREE.Geometry());
+    var geometry = new THREE.Geometry().setFromPoints( points );
+    
+    // var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+    var material = new THREE.LineBasicMaterial( { color : lerpColor("#00ff00", "#ff0000", intensity / 30) } );
 
     // Create the final object to add to the scene
     var curveObject = new THREE.Line( geometry, material );
     scene.add(curveObject);
-    console.log("Curve line draw hint added");
+    // console.log("Curve line draw hint added");
   }
 
 
@@ -429,6 +459,7 @@ DAT.Globe = function(container, opts) {
   this.createPoints = createPoints;
   this.renderer = renderer;
   this.scene = scene;
+  this.addCurve = addCurve;
 
   return this;
 

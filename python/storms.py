@@ -33,10 +33,10 @@ last = cyclone_nodes[0][1]
 for node in cyclone_nodes:
     current = node[1]
     if current == last:
-        cyclone.append([node[3], node[4], node[6]])
+        cyclone.append([float(node[3]), float(node[4]), float(node[6])])
     else:
         cyclones[last] = cyclone
-        cyclone = [[node[3], node[4], node[6]]]
+        cyclone = ([float(node[3]), float(node[4]), float(node[6])])
         last = current
 
 # Start timer.
@@ -54,6 +54,7 @@ for node in cyclone_nodes:
             count = count + 1
 SIDs_in_radius.pop(0)
 
+# Filter the valid cyclones by SID and add to JSON.
 filtered_cyclones = {}
 for SID in SIDs_in_radius:
     filtered_cyclones[SID] = cyclones[SID]
