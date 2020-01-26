@@ -21,7 +21,7 @@ DAT.Globe = function(container, opts) {
     c.setHSL( ( 0.6 - ( x * 0.5 ) ), 1.0, 0.5 );
     return c;
   };
-  var imgDir = opts.imgDir || '/globe/';
+  var imgDir = opts.imgDir || '/static/globe/';
 
   var Shaders = {
     'earth' : {
@@ -165,6 +165,33 @@ DAT.Globe = function(container, opts) {
     }, false);
   }
 
+
+  // Met Office 2020 Additional Functionality
+
+  /**
+   * Adds a curve to the globe's drawing buffer.
+   * @param {*} data A table of two sets of long and lat representing the start and end of a line.
+   */
+  function addCurve(data) {
+    console.log("Drawing curve...");
+    console.log(data);
+    const curve = getSplineFromCoords(data);
+
+    var points = curve.getPoints(50);
+    var geometry = new THREE.BufferGeometry().setFromPoints( points );
+
+    var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+
+    // Create the final object to add to the scene
+    var curveObject = new THREE.Line( geometry, material );
+    scene.add(curveObject);
+    console.log("Curve line draw hint added");
+  }
+
+
+  // End Met Office 2020 Additional Functionality
+
+  
   function addData(data, opts) {
     var lat, lng, size, color, i, step, colorFnWrapper;
 
