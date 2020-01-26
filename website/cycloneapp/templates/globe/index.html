@@ -135,7 +135,7 @@
   <script type="text/javascript">
   var FizzyText = function() {
     this.message = "test";
-    this.dateRange = 2020;
+    this.dateRange = "";
     this.latitude = 0.0;
     this.longitude = 0.0;
     this.intensity = 0;
@@ -154,7 +154,7 @@
   window.onload = function() {
     text = new FizzyText();
     var gui = new dat.GUI();
-    gui.add(text, 'dateRange', 1842, 2020);
+    gui.add(text, 'dateRange');
     gui.add(text, 'latitude');
     gui.add(text, "longitude");
     gui.add(text, 'intensity', 0, 100);
