@@ -140,70 +140,26 @@
     this.longitude = 0.0;
     this.intensity = 0;
     this.radius = 50;
+    this.count = 0;
     this.submit = function() {
-      
-      var xhr = new XMLHttpRequest();
-      
-      xhr.open('GET', 'freqStorms/', true);
-      xhr.onreadystatechange = function(e) {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            window.data = data;
+      console.log("Submitting");
+      console.log(this);
+      // '/static/globe/output.json'
+      loadGlobe(`freqStorms/?date_range=${this.dateRange}&click_lat=${this.latitude}&click_long=${this.longitude}&radius=${this.radius}`);
 
-            // console.log(data);
-            
-            // for (i=0;i<data.length;i++) {
-            //   globe.addData(data[i][1], {format: 'magnitude', name: data[i][0], animated: true});
-            // )
-
-            for (var key in data) {
-              const nodes = data[key]
-
-              // console.log(nodes);
-              for (var i = 0; i < nodes.length - 1; i++) {
-                const startNode = nodes[i]
-                const endNode = nodes[i + 1]
-
-                // console.log(startNode);
-                // console.log(endNode);
-
-                const coordSet = [parseFloat(startNode[0]), parseFloat(startNode[1]), parseFloat(endNode[0]), parseFloat(endNode[1])]
-                // console.log(coordSet)
-
-
-                globe.addCurve(coordSet, startNode[2])
-              }
-            }
-
-            // New layer of drawings
-            
-            // globe.addData(getSplineFromCoords(exampleLine), {});
-
-            // Add to THREE.Geometry
-            // Add it to a THREE.Line
-
-            // globe.createPoints();
-            settime(globe,0)();
-            globe.animate();
-            document.body.style.backgroundImage = 'none'; // remove loading
-          }
-        }
-      };
-      xhr.send(null);
-
-
-    };
+    }
   };
 
+  var text;
   window.onload = function() {
-    var text = new FizzyText();
+    text = new FizzyText();
     var gui = new dat.GUI();
     gui.add(text, 'dateRange', 1842, 2020);
     gui.add(text, 'latitude');
     gui.add(text, "longitude");
     gui.add(text, 'intensity', 0, 100);
-    gui.add(text, 'radius', 50, 500);
+    gui.add(text, 'radius', 50, 50000);
+    gui.add(text, 'count').listen();
     gui.add(text, "submit");
   };
   </script>
@@ -214,101 +170,105 @@
   <script type="text/javascript" src={% static "globe/third-party/Tween.js" %}></script>
 
   <script type="text/javascript" src="{% static "globe/metoffice.js" %}"></script>
-  <script type="text/javascript" src="{% static "globe/globe.js" %}?v=1.2.0"></script>
+  <script type="text/javascript" src="{% static "globe/globe.js" %}?v=1.3.0"></script>
   <script type="text/javascript">
 
     if(!Detector.webgl){
       Detector.addGetWebGLMessage();
     } else {
 
-      var years = ['1990','1995','2000'];
-      var container = document.getElementById('container');
-      var globe = new DAT.Globe(container);
-
-      // const exampleLine = [ 13, 61.3, 26.3, 60.4 ]
-      // globe.addCurve(exampleLine);
-      //  globe.addCurve([32.6, -38.4, 39.8, -85.4])
-
-      console.log(globe);
-      var i, tweens = [];
       
-      var settime = function(globe, t) {
-        return function() {
-          new TWEEN.Tween(globe).to({time: t/years.length},500).easing(TWEEN.Easing.Cubic.EaseOut).start();
-          var y = document.getElementById('year'+years[t]);
-          if (y.getAttribute('class') === 'year active') {
-            return;
-          }
-          var yy = document.getElementsByClassName('year');
-          for(i=0; i<yy.length; i++) {
-            yy[i].setAttribute('class','year');
-          }
-          y.setAttribute('class', 'year active');
-        };
-      };
-      
-      for(var i = 0; i<years.length; i++) {
-        var y = document.getElementById('year'+years[i]);
-        y.addEventListener('mouseover', settime(globe,i), false);
-      }
-      
-      var xhr;
-      TWEEN.start();
-      
-      
-      xhr = new XMLHttpRequest();
-      // xhr.open('GET', '/static/globe/population909500pretty.json', true);
-      xhr.open('GET', '/static/globe/output.json', true);
-      xhr.onreadystatechange = function(e) {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            window.data = data;
+      function loadGlobe(uri) {
+        var years = ['1990','1995','2000'];
+        var container = document.getElementById('container');
+        var globe = new DAT.Globe(container);
 
-            // console.log(data);
-            
-            // for (i=0;i<data.length;i++) {
-            //   globe.addData(data[i][1], {format: 'magnitude', name: data[i][0], animated: true});
-            // )
+        // const exampleLine = [ 13, 61.3, 26.3, 60.4 ]
+        // globe.addCurve(exampleLine);
+        //  globe.addCurve([32.6, -38.4, 39.8, -85.4])
 
-            for (var key in data) {
-              const nodes = data[key]
-
-              // console.log(nodes);
-              for (var i = 0; i < nodes.length - 1; i++) {
-                const startNode = nodes[i]
-                const endNode = nodes[i + 1]
-
-                // console.log(startNode);
-                // console.log(endNode);
-
-                const coordSet = [parseFloat(startNode[0]), parseFloat(startNode[1]), parseFloat(endNode[0]), parseFloat(endNode[1])]
-                // console.log(coordSet)
-
-
-                globe.addCurve(coordSet, startNode[2])
-              }
+        console.log(globe);
+        var i, tweens = [];
+        
+        var settime = function(globe, t) {
+          return function() {
+            new TWEEN.Tween(globe).to({time: t/years.length},500).easing(TWEEN.Easing.Cubic.EaseOut).start();
+            var y = document.getElementById('year'+years[t]);
+            if (y.getAttribute('class') === 'year active') {
+              return;
             }
-
-            // New layer of drawings
-            
-            // globe.addData(getSplineFromCoords(exampleLine), {});
-
-            // Add to THREE.Geometry
-            // Add it to a THREE.Line
-
-            // globe.createPoints();
-            settime(globe,0)();
-            globe.animate();
-            document.body.style.backgroundImage = 'none'; // remove loading
-          }
+            var yy = document.getElementsByClassName('year');
+            for(i=0; i<yy.length; i++) {
+              yy[i].setAttribute('class','year');
+            }
+            y.setAttribute('class', 'year active');
+          };
+        };
+        
+        for(var i = 0; i<years.length; i++) {
+          var y = document.getElementById('year'+years[i]);
+          y.addEventListener('mouseover', settime(globe,i), false);
         }
-      };
-      xhr.send(null);
+        
+        var xhr;
+        TWEEN.start();
+        
+        
+        xhr = new XMLHttpRequest();
+        // xhr.open('GET', '/static/globe/population909500pretty.json', true);
+        xhr.open('GET', uri, true);
+        xhr.onreadystatechange = function(e) {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              var data = JSON.parse(xhr.responseText);
+              window.data = data;
 
-      
-    }
+              text.count = Object.keys(data).length;
+              // FizzyText.count.updateDisplay();
 
+              console.log(data);
+              
+              // for (i=0;i<data.length;i++) {
+              //   globe.addData(data[i][1], {format: 'magnitude', name: data[i][0], animated: true});
+              // )
+
+              for (var key in data) {
+                const nodes = data[key]
+
+                // console.log(nodes);
+                for (var i = 0; i < nodes.length - 1; i++) {
+                  const startNode = nodes[i]
+                  const endNode = nodes[i + 1]
+
+                  // console.log(startNode);
+                  // console.log(endNode);
+
+                  const coordSet = [parseFloat(startNode[0]), parseFloat(startNode[1]), parseFloat(endNode[0]), parseFloat(endNode[1])]
+                  // console.log(coordSet)
+
+                  globe.addCurve(coordSet, startNode[2])
+                }
+              }
+
+              // New layer of drawings
+              
+              // globe.addData(getSplineFromCoords(exampleLine), {});
+
+              // Add to THREE.Geometry
+              // Add it to a THREE.Line
+
+              // globe.createPoints();
+              settime(globe,0)();
+              globe.animate();
+              document.body.style.backgroundImage = 'none'; // remove loading
+            }
+          }
+        };
+        xhr.send(null); 
+      }
+
+      // loadGlobe('/static/globe/output.json');
+    }      
   </script>
 
   </body>

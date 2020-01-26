@@ -17,7 +17,8 @@ import pathlib
 def storm_query_slow(latitude, longitude, radius, input_file):
     # Populate cyclone nodes.
     nodes = 0
-    max_nodes = 10000
+    # max_nodes = 10000
+    max_nodes = 10000000
     cyclone_nodes = []
     
     print(pathlib.Path().absolute())
@@ -35,9 +36,9 @@ def storm_query_slow(latitude, longitude, radius, input_file):
     count = 0
     cyclones = {}
     cyclone = []
-    last = cyclone_nodes[0][1]
+    last = cyclone_nodes[0][0]
     for node in cyclone_nodes:
-        current = node[1]
+        current = node[0]
         if current == last:
             cyclone.append([float(node[3]), float(node[4]), float(node[6])])
         else:
@@ -55,8 +56,8 @@ def storm_query_slow(latitude, longitude, radius, input_file):
         coords_node = (node[3], node[4])
         distance = geopy.distance.distance(coords_user, coords_node).km
         if distance < radius:
-            if not node[1] == SIDs_in_radius[-1]:
-                SIDs_in_radius.append(node[1])
+            if not node[0] == SIDs_in_radius[-1]:
+                SIDs_in_radius.append(node[0])
                 count = count + 1
     SIDs_in_radius.pop(0)
 

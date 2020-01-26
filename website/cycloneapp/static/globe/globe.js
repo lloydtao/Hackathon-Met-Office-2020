@@ -214,8 +214,15 @@ DAT.Globe = function(container, opts) {
 
     // Create the final object to add to the scene
     var curveObject = new THREE.Line( geometry, material );
+    curveObject.name = "curves"
     scene.add(curveObject);
     // console.log("Curve line draw hint added");
+  }
+
+  function removeAllCurves() {
+    console.log("Removing curves");
+    console.log(scene.getObjectByName("curves"));
+    scene.remove(scene.getObjectByName("curves"));
   }
 
 
@@ -460,6 +467,7 @@ DAT.Globe = function(container, opts) {
   this.renderer = renderer;
   this.scene = scene;
   this.addCurve = addCurve;
+  this.removeAllCurves = removeAllCurves;
 
   return this;
 
