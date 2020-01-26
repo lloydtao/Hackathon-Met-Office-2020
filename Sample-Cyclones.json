@@ -1,0 +1,252 @@
+[
+  {
+    "ID": 1,
+    "CycloneID": 1,
+    "Reference": 1,
+    "Name": "Alpha",
+    "Latitude": 13,
+    "Longitude": 61.3,
+    "Date": "20/06/2010 06:00",
+    "Intensity": 25
+  },
+  {
+    "ID": 2,
+    "CycloneID": 1,
+    "Reference": 2,
+    "Name": "Alpha",
+    "Latitude": 13.0606,
+    "Longitude": 61.0741,
+    "Date": "20/06/2010 09:00",
+    "Intensity": 25
+  },
+  {
+    "ID": 3,
+    "CycloneID": 1,
+    "Reference": 3,
+    "Name": "Alpha",
+    "Latitude": 13.135,
+    "Longitude": 60.8426,
+    "Date": "20/06/2010 12:00",
+    "Intensity": 30
+  },
+  {
+    "ID": 4,
+    "CycloneID": 1,
+    "Reference": 4,
+    "Name": "Alpha",
+    "Latitude": 13.2169,
+    "Longitude": 60.6147,
+    "Date": "20/06/2010 15:00",
+    "Intensity": 30
+  },
+  {
+    "ID": 5,
+    "CycloneID": 1,
+    "Reference": 5,
+    "Name": "Alpha",
+    "Latitude": 13.3,
+    "Longitude": 60.4,
+    "Date": "20/06/2010 18:00",
+    "Intensity": 25
+  },
+  {
+    "ID": 6,
+    "CycloneID": 2,
+    "Reference": 1,
+    "Name": "Beta",
+    "Latitude": 10,
+    "Longitude": 74.3,
+    "Date": "15/07/2010 09:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 7,
+    "CycloneID": 2,
+    "Reference": 2,
+    "Name": "Beta",
+    "Latitude": 10.0329,
+    "Longitude": 74.1547,
+    "Date": "15/07/2010 12:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 8,
+    "CycloneID": 2,
+    "Reference": 3,
+    "Name": "Beta",
+    "Latitude": 10.0725,
+    "Longitude": 74.0075,
+    "Date": "15/07/2010 15:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 9,
+    "CycloneID": 2,
+    "Reference": 4,
+    "Name": "Beta",
+    "Latitude": 10.126,
+    "Longitude": 73.8566,
+    "Date": "15/07/2010 18:00",
+    "Intensity": 45
+  },
+  {
+    "ID": 10,
+    "CycloneID": 2,
+    "Reference": 5,
+    "Name": "Beta",
+    "Latitude": 10.2,
+    "Longitude": 73.7,
+    "Date": "15/07/2010 19:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 11,
+    "CycloneID": 3,
+    "Reference": 1,
+    "Name": "Gamma",
+    "Latitude": -16.5,
+    "Longitude": 67.5,
+    "Date": "15/07/2010 09:00",
+    "Intensity": 30
+  },
+  {
+    "ID": 12,
+    "CycloneID": 3,
+    "Reference": 2,
+    "Name": "Gamma",
+    "Latitude": -16.6897,
+    "Longitude": 67.4815,
+    "Date": "15/07/2010 12:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 13,
+    "CycloneID": 3,
+    "Reference": 3,
+    "Name": "Gamma",
+    "Latitude": -16.8925,
+    "Longitude": 67.4775,
+    "Date": "15/07/2010 15:00",
+    "Intensity": 50
+  },
+  {
+    "ID": 14,
+    "CycloneID": 3,
+    "Reference": 4,
+    "Name": "Gamma",
+    "Latitude": -17.0991,
+    "Longitude": 67.4847,
+    "Date": "15/07/2010 18:00",
+    "Intensity": 60
+  },
+  {
+    "ID": 15,
+    "CycloneID": 3,
+    "Reference": 5,
+    "Name": "Gamma",
+    "Latitude": -17.3,
+    "Longitude": 67.5,
+    "Date": "15/07/2010 19:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 16,
+    "CycloneID": 4,
+    "Reference": 1,
+    "Name": "Delta",
+    "Latitude": -9,
+    "Longitude": 78.9,
+    "Date": "20/08/2010 06:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 17,
+    "CycloneID": 4,
+    "Reference": 2,
+    "Name": "Delta",
+    "Latitude": -9.11204,
+    "Longitude": 78.3653,
+    "Date": "20/08/2010 09:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 18,
+    "CycloneID": 4,
+    "Reference": 3,
+    "Name": "Delta",
+    "Latitude": -9.24269,
+    "Longitude": 77.7234,
+    "Date": "20/08/2010 12:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 19,
+    "CycloneID": 4,
+    "Reference": 4,
+    "Name": "Delta",
+    "Latitude": -9.39144,
+    "Longitude": 77.0024,
+    "Date": "20/08/2010 15:00",
+    "Intensity": 45
+  },
+  {
+    "ID": 20,
+    "CycloneID": 4,
+    "Reference": 5,
+    "Name": "Delta",
+    "Latitude": -9.55788,
+    "Longitude": 76.2304,
+    "Date": "20/08/2010 18:00",
+    "Intensity": 40
+  },
+  {
+    "ID": 21,
+    "CycloneID": 5,
+    "Reference": 1,
+    "Name": "Epsilon",
+    "Latitude": -33.2,
+    "Longitude": 50.4,
+    "Date": "20/08/2010 06:00",
+    "Intensity": 25
+  },
+  {
+    "ID": 22,
+    "CycloneID": 5,
+    "Reference": 2,
+    "Name": "Epsilon",
+    "Latitude": -33.6638,
+    "Longitude": 50.7682,
+    "Date": "20/08/2010 09:00",
+    "Intensity": 25
+  },
+  {
+    "ID": 23,
+    "CycloneID": 5,
+    "Reference": 3,
+    "Name": "Epsilon",
+    "Latitude": -33.9862,
+    "Longitude": 51.0261,
+    "Date": "20/08/2010 12:00",
+    "Intensity": 30
+  },
+  {
+    "ID": 24,
+    "CycloneID": 5,
+    "Reference": 4,
+    "Name": "Epsilon",
+    "Latitude": -34.1882,
+    "Longitude": 51.1878,
+    "Date": "20/08/2010 15:00",
+    "Intensity": 30
+  },
+  {
+    "ID": 25,
+    "CycloneID": 5,
+    "Reference": 5,
+    "Name": "Epsilon",
+    "Latitude": -34.2903,
+    "Longitude": 51.2682,
+    "Date": "20/08/2010 18:00",
+    "Intensity": 25
+  }
+]
