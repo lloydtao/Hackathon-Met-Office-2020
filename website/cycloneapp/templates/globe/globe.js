@@ -152,6 +152,10 @@ DAT.Globe = function(container, opts) {
 
     container.addEventListener('mousewheel', onMouseWheel, false);
 
+    container.addEventListener('dblclick', onDoubleClick, false);
+
+
+    
     document.addEventListener('keydown', onDocumentKeyDown, false);
 
     window.addEventListener('resize', onWindowResize, false);
@@ -272,7 +276,7 @@ DAT.Globe = function(container, opts) {
 
   function onMouseDown(event) {
     event.preventDefault();
-
+    console.log("aids")
     container.addEventListener('mousemove', onMouseMove, false);
     container.addEventListener('mouseup', onMouseUp, false);
     container.addEventListener('mouseout', onMouseOut, false);
@@ -287,6 +291,7 @@ DAT.Globe = function(container, opts) {
   }
 
   function onDoubleClick(event) {
+    console.log("hello");
     event.preventDefault();
 
     var canvas = renderer.domElement;
@@ -299,7 +304,7 @@ DAT.Globe = function(container, opts) {
 
     var intersects = ray.intersectObject(globe3d);
 
-    if (intersects.length > 0) {
+    if (intersects.length > 0) {s
 
         object = intersects[0];
 
@@ -313,7 +318,12 @@ DAT.Globe = function(container, opts) {
 
         lat = Math.round(lat * 100000) / 100000;
         lon = Math.round(lon * 100000) / 100000;
-        window.location.href = 'gmaps?lat='+lat+'&lon='+lon;
+        
+        myArray = [
+          {
+          "lat": lat,
+          "lon": lon
+          }]
 
     }
   }  
@@ -346,6 +356,7 @@ DAT.Globe = function(container, opts) {
 
   function onMouseWheel(event) {
     event.preventDefault();
+    console.log("hello, mousewheel")
     if (overRenderer) {
       zoom(event.wheelDeltaY * 0.3);
     }

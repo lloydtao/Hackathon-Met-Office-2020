@@ -140,13 +140,11 @@ window.onload = function() {
     var myArray = [
       {
       "lat": lat,
-      "long": long,
+      "lon": lon,
       "date": date,
       "radius": radius,
       "intensity": intensity
       }]
-    
-    
 
 });
   
@@ -157,7 +155,7 @@ window.onload = function() {
   <script type="text/javascript" src={% static "globe/third-party/Detector.js" %}></script>
   <script type="text/javascript" src={% static "globe/third-party/three.min.js" %}></script>
   <script type="text/javascript" src={% static "globe/third-party/Tween.js" %}></script>
-  <script type="text/javascript" src={% static "globe/globe.js" %}></script>
+  <script type="text/javascript" src={% static "globe/globe.js" %}?v=1.0.0></script>
   <script type="text/javascript"> 
 
     if(!Detector.webgl){
