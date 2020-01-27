@@ -1,14 +1,14 @@
 # Met Office 2020 Hackathon
-Develop a program for visualising tropical cyclone locations and paths.
+Develop a program for visualising tropical cyclone locations and their paths.
 
-## Screenshots
+## Images
+![Image of the visualisation app in action.](demo1.png)
 
+![Image of a whiteboard with a user flow, long-term goal and storyboard drawn on it.](whiteboard2.jpg)
+Whiteboarding out the vision for our problem, the user's flow through the problem and a draft storyboard of our solution.
 
-## Data to Download
-Log-in to AWS and then navigate to:
-https://s3.console.aws.amazon.com/s3/buckets/informatics-data/hackathon-jan2020/?region=eu-west-1&tab=overview
-
-Download the files in tropical-cyclone-data.
+![Image of a whiteboard with a technical description of each part of the user and computer journey through the problem.](whiteboard1.jpg)
+Extending out our storyboard and breaking down the technical overview of our problem so we can make decisions on technologies delegate tasks to one another. Here we go through the full story of both the user and 'the computer' as they journey through the problem.
 
 ## Project Initiative
 Develop a GUI for Tropical Cyclones.
@@ -30,6 +30,12 @@ For example:
 - User sorts the cyclones by date.
 - User filters it down to cyclones in India.
 - User can play a visualisation of each cyclone.
+
+## Data to Download
+Log-in to AWS and then navigate to:
+https://s3.console.aws.amazon.com/s3/buckets/informatics-data/hackathon-jan2020/?region=eu-west-1&tab=overview
+
+Download the files in tropical-cyclone-data.
 
 ## Our Application
 Step 1: Collect data from Met Office S3 bucket.
