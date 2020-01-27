@@ -6,7 +6,7 @@ from django.utils import dateparse
 
 from .models import Cyclone, CycloneNode
 from .storms_with_query import query_storms
-from .storms import storm_query_slow
+from .storms import query_storm_from_file
 
 
 def index(request):
@@ -36,7 +36,7 @@ def freq_storms(request):
 
     # Process cyclones based on radius and date range   
     # return JsonResponse(query_storms(date_range, click_long, click_lat, radius))
-    return JsonResponse(storm_query_slow(click_lat, click_long, round(float(radius)), "", ""))
+    return JsonResponse(query_storm_from_file(click_lat, click_long, round(float(radius)), "", ""))
 
 
 def upload_cyclones(request):
