@@ -15,7 +15,6 @@ import pathlib
 # radius = float(sys.argv[3])
 # input_file = sys.argv[4]
 
-# Sorry for the globals Lewis xD
 cyclone_nodes = []
 nodes = 0
 max_nodes = 10000000
@@ -40,6 +39,9 @@ print("Cyclone nodes loaded!")
 query_id = 1
 
 def storm_query_slow(latitude, longitude, radius, start_year, end_year):
+    # Sorry for the globals Lewis xD
+    global query_id, cyclone_nodes
+
     print(f"Query {query_id} received: {latitude} {longitude} {radius} {start_year} {end_year}")
 
     # Start timer.
