@@ -8,7 +8,7 @@ Develop a program for visualising tropical cyclone locations and their paths.
 Whiteboarding out the vision for our problem, the user's flow through the problem and a draft storyboard of our solution.
 
 ![Image of a whiteboard with a technical description of each part of the user and computer journey through the problem.](whiteboard1.jpg)
-Extending out our storyboard and breaking down the technical overview of our problem so we can make decisions on technologies delegate tasks to one another. Here we go through the full story of both the user and 'the computer' as they journey through the problem.
+Extending out our storyboard and breaking down the technical overview of our problem so we can make decisions on technologies and delegate tasks to one another. Here we go through the full story of both the user and 'the computer' as they journey through the problem.
 
 ## Project Initiative
 Develop a GUI for Tropical Cyclones.
