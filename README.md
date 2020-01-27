@@ -1,6 +1,8 @@
 # Met Office 2020 Hackathon
 Develop a program for visualising tropical cyclone locations and their paths.
 
+Our entry came first place!
+
 ## Images
 ![Image of the visualisation app in action.](demo1.png)
 
